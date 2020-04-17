@@ -3,7 +3,8 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh "echo $WH_SLACK_ANDROID_DEV_BRANCH_BUILDER_INFO"
+            	SLACK_POST_URL = credentials('WH_SLACK_ANDROID_DEV_BRANCH_BUILDER_INFO')
+                sh "echo $SLACK_POST_URL"
             }
         }
     }
