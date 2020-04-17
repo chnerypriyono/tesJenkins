@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'echo hello world'
+                sh "echo $WH_SLACK_ANDROID_DEV_BRANCH_BUILDER_INFO"
             }
         }
     }
