@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh "echo $SLACK_POST_URL"
+                sh "curl -X POST -H 'Content-type: application/json' --data \"{'text':'$BUILD_URL has failed'}\" $SLACK_POST_URL"
             }
         }
     }
