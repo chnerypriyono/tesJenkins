@@ -2,18 +2,17 @@ pipeline {
 	agent any
 	environment {
 		WH_SLACK_ANDROID_DEV_BRANCH_BUILDER_INFO = credentials('WH_SLACK_ANDROID_DEV_BRANCH_BUILDER_INFO')
-        i="a"
 	}
     stages {
         stage('build') {
             steps {
                 script {
-                    String randomString = org.apache.commons.lang.RandomStringUtils.random(9, true, true)
+                    ERROR_LOG_FILENAME = UUID.randomUUID().toString()
                 }
-                sh "echo isi_file_error_log > error_log.txt"
+                sh "echo isi_file_error_log > $ERROR_LOG_FILENAME.txt"
                 script {
 
-                    ERROR_LOG = readFile('error_log.txt').trim()
+                    ERROR_LOG = readFile('$ERROR_LOG_FILENAME.txt').trim()
                 }
             }
         }
