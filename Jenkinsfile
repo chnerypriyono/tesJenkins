@@ -2,12 +2,11 @@ pipeline {
 	agent any
 	environment {
 		WH_SLACK_ANDROID_DEV_BRANCH_BUILDER_INFO = credentials('WH_SLACK_ANDROID_DEV_BRANCH_BUILDER_INFO')
+        i="a"
 	}
     stages {
         stage('build') {
             steps {
-                i="a"
-                echo i
                 sh "i=${i}; " + 'echo "from shell i=$i"'            
                 sh "ERROR_LOG=blablabla"
                 sh 'echo "$ERROR_LOG"'
