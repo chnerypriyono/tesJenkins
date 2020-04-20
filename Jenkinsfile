@@ -7,12 +7,13 @@ pipeline {
         stage('build') {
             steps {
                 script {
-                    ERROR_LOG_FILENAME = UUID.randomUUID().toString()
+                    //ERROR_LOG_FILENAME = UUID.randomUUID().toString()
+                    ERROR_LOG_FILENAME=error_log_2
                 }
                 sh "echo $ERROR_LOG_FILENAME"
                 sh "echo isi_file_error_log > $ERROR_LOG_FILENAME.txt"
                 script {
-                    ERROR_LOG = readFile("$ERROR_LOG_FILENAME.txt").trim()
+                    ERROR_LOG = readFile("error_log_2.txt").trim()
                 }
             }
         }
