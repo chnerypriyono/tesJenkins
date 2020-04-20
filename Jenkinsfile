@@ -11,9 +11,9 @@ pipeline {
                     ERROR_LOG_FILENAME="error_log_2"
                 }
                 sh "echo $ERROR_LOG_FILENAME"
-                sh "echo isi_file_error_log > $ERROR_LOG_FILENAME.txt"
+                sh "echo isi_file_error_log > ${ERROR_LOG_FILENAME}"
                 script {
-                    ERROR_LOG = readFile("error_log_2.txt").trim()
+                    ERROR_LOG = readFile("error_log_2").trim()
                 }
             }
         }
