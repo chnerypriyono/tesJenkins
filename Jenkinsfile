@@ -7,9 +7,12 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                //String randomString = org.apache.commons.lang.RandomStringUtils.random(9, true, true)
+                script {
+                    String randomString = org.apache.commons.lang.RandomStringUtils.random(9, true, true)
+                }
                 sh "echo isi_file_error_log > error_log.txt"
                 script {
+
                     ERROR_LOG = readFile('error_log.txt').trim()
                 }
             }
