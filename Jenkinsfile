@@ -10,7 +10,7 @@ pipeline {
                     ERROR_LOG_FILENAME = UUID.randomUUID().toString()            
                 }
                 sh "echo $ERROR_LOG_FILENAME"
-                sh 'echo isi_file_error_log > ${ERROR_LOG_FILENAME}'
+                sh 'echo isi_file_error_log >' + "${ERROR_LOG_FILENAME}"
                 script {
                     ERROR_LOG = '_' + readFile("${ERROR_LOG_FILENAME}").trim() + '_'
                 }
