@@ -10,9 +10,10 @@ pipeline {
                     ERROR_LOG_FILENAME = UUID.randomUUID().toString()            
                 }
                 sh "echo $ERROR_LOG_FILENAME"
-                sh 'echo isi_file_error_log >' + "${ERROR_LOG_FILENAME}"
+                sh 'echo "isi_file_error_log\nWhat went wrong:\nbaris bawahnya" >' + "${ERROR_LOG_FILENAME}"
                 script {
-                    ERROR_LOG = '_' + readFile("${ERROR_LOG_FILENAME}").trim() + '_'
+                    ERROR_LOG = sh (script: "grep \"What went wrong\" ${ERROR_LOG_FILENAME} -B 10 -A5", returnStdout: true).trim()
+                    //ERROR_LOG = '_' + readFile("${ERROR_LOG_FILENAME}").trim() + '_'
                     sh "rm ${ERROR_LOG_FILENAME}"
                 }
             }
