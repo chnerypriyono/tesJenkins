@@ -12,7 +12,7 @@ pipeline {
                 sh "echo $ERROR_LOG_FILENAME"
                 sh "echo isi_file_error_log > ${ERROR_LOG_FILENAME}"
                 script {
-                    ERROR_LOG = 'aww' + readFile("${ERROR_LOG_FILENAME}").trim() + 'aww'
+                    ERROR_LOG = '_' + readFile("${ERROR_LOG_FILENAME}").trim() + '_'
                 }
                 sh "rm ${ERROR_LOG_FILENAME}"
             }
